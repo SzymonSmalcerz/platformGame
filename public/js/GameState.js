@@ -13,12 +13,16 @@ let GameState = {
       speed : 250
     }
     this.game.physics.arcade.enable(this.ninja);
-    // this.ninja.play("walk");
+    this.ninja.body.collideWorldBounds = true;
+    this.ninja.body.width = 16;
+    this.ninja.body.offset.x = 8;
+
 
     this.ground = this.game.add.sprite(0,580,"ground");
     this.game.physics.arcade.enable(this.ground);
     this.ground.body.allowGravity = false;
     this.ground.body.immovable = true;
+    console.log(this.ground.body);
 
     let platformsData = [
       {"x" : -30, "y" : 450},
@@ -32,8 +36,14 @@ let GameState = {
     platformsData.forEach(platform => {
       this.platforms.create(platform.x,platform.y,"platform");
     });
+    // this.platforms.
     this.platforms.setAll("body.immovable",true);
     this.platforms.setAll("body.allowGravity",false);
+    this.platforms.setAll("body.offset.y",26);
+    // this.platforms.setAll("body.y",26);
+    this.platforms.setAll("body.height",39);
+
+    console.log(this.platforms)
 
 
 
@@ -54,6 +64,8 @@ let GameState = {
   },
   update : function(){
     this.game.physics.arcade.collide(this.ninja, this.ground);
+    this.game.physics.arcade.collide(this.ninja, this.platforms);
+    this.game.physics.arcade.collide(this.ninja, this.queen);
     // this.game.physics.arcade.overlap(this.ninja, this.ground, () => {
     //   console.log("overlap");
     // });
