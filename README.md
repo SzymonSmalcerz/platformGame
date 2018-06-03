@@ -1,5 +1,5 @@
 # virtualPet
-virtual pet created to test phaser
+small platform game created to learn phaser
 
 # demo
-https://virtual-pet-szymix.herokuapp.com/game
+https://platform-game-szymix.herokuapp.com/game
