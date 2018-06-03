@@ -1,7 +1,4 @@
-let HomeState = {
-  init(){
-    this.game.stage.backgroundColor = "#323232";
-  },
+let WinState = {
   create(){
     this.textStyle = {
       font : "40pt bold",
@@ -12,12 +9,14 @@ let HomeState = {
     this.background.inputEnabled = true;
     this.background.events.onInputDown.add(this.startGame, this);
 
-    let tapText = this.game.add.text(this.game.world.centerX, this.game.world.centerY-80, "tap to start", this.textStyle);
+    let tapText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, "tap to try again", this.textStyle);
     tapText.anchor.setTo(0.5);
+    let winText = this.game.add.text(this.game.world.centerX, this.game.world.centerY-180, "you won :3", this.textStyle);
+    winText.anchor.setTo(0.5);
 
   },
   startGame(){
-    console.log("clicked");
+    // console.log("clicked");
     this.game.state.start("GameState");
   }
 }
